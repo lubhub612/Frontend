@@ -1,0 +1,62 @@
+.buyhedra_sec {
+	padding: 30px 0 30px;
+}
+.form_box {
+	border: 1px solid #e1e1e1;
+}
+.form_box input {
+	box-shadow: unset;
+	line-height: unset;
+	height: 45px;
+	border: 1px solid #e1e1e1;
+	font-size: 15px;
+	color: #4f4f4f;
+	font-weight: 300;
+	background-color: #fff;
+}
+.form_box h3, .orde_dtls h3 {
+	font-size: 20px;
+	background: #a6a6a6;
+	padding: 15px 25px;
+	color: #fff;
+	margin: 0px 0 20px;
+}
+
+.form_box form{
+	padding: 0 25px;
+}
+
+.form_box button{
+	background: #000;
+	border: none;
+	border-radius: 0;
+	padding: 15px 50px;
+	font-weight: 600;
+	margin-top: 10px;
+}
+
+.form_box .crnt_stlr{
+	padding: 0 25px;
+}
+
+@media(max-width:767px){
+   .form_box h3 {
+		font-size: 20px;
+	}
+	.form_box {
+		margin-bottom: 30px;
+	}
+}
+
+@media(max-width:400px){
+   .form_box h3 {
+		font-size: 18px;
+		padding: 15px;
+	}
+	.form_box form {
+		padding: 0 15px;
+	}
+	.form_box .crnt_stlr {
+		padding: 0 15px;
+	}
+}

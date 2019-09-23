@@ -1,0 +1,39 @@
+<div class="buyhedra_sec">
+    <div class="row">
+
+<div class="col-sm-8">
+    <div class="orde_dtls">
+      <h3> User Sell Order Details</h3>
+  <div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      
+      <th>UserName</th>
+      <th>FiatPrice</th>
+      <th>Hedera Amount</th>
+      <th>Lumen Amount</th>
+      <th>Total Amount</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let selluser of sellorderresponses">  
+      <!-- <tr>  -->
+      <td>{{selluser.username}}</td>
+      <td>{{selluser.fiatprice}} USD</td>
+      <td>{{selluser.hedamount}} Hbar</td>
+      <td>{{selluser.lumenamount}} XLM</td>
+      <td>{{selluser.totalprice}} USD</td>
+      <td *ngIf="selluser.status==0; else elseBlock">Pending</td>
+      <ng-template #elseBlock>Sell</ng-template>
+    </tr>
+    </tbody>
+  </table>
+</div>
+    </div>
+</div> 
+</div>
+
+
+<button class="btn btn-info" (click)="goHome()"> Home</button> 

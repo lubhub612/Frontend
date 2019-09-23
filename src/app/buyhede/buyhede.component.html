@@ -1,0 +1,116 @@
+<div class="buyhedra_sec">
+    <div class="row">
+        <div class="col-sm-4">
+          <div class="form_box">
+        <h3 class="text-primary">Order to Buy Stellar at Your Price</h3>
+        <p class="crnt_stlr"><strong>Current Stellar Price:</strong>{{lumenprice.last}} <strong>USD</strong></p>
+        <p class="crnt_stlr"><strong>Hbar Balance in your account:</strong>{{info.balance}} <strong>tinyHbar</strong></p>
+        <p class="crnt_stlr"><strong>We are exchanging on the basis of Hedera 0.00000505 BTC and XLM 0.00000755 BTC</strong>
+        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+          <div class="form-group">
+            <label for="fiatprice">Stellar Price</label>
+            <input type="text"   [(ngModel)]="form1.fiatprice" placeholder="Stellar Price" name="fiatprice" class="form-control"  #fiatprice="ngModel"
+            required />
+            <div *ngIf="f.submitted && fiatprice.invalid">
+                <div *ngIf="fiatprice.errors.required">Stellar Price  is required</div>
+              </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="hedamount">Hedera Amount</label>
+            <input  type="text"  [(ngModel)]="form1.hedamount"  (ngModelChange)="valuechange($event)"  placeholder="Hedera Amount" name="hedamount" class="form-control" #hedamount="ngModel"
+            required />
+             <div *ngIf="f.submitted && hedamount.invalid">
+                   <div *ngIf="hedamount.errors.required">Hedera Amount is required</div>
+              </div> 
+          </div>
+    
+          <div class="form-group">
+            <label for="lumenamount">Stellar  Amount</label>
+            <input type="text" [(ngModel)]="form1.lumenamount"   placeholder="Stellar Amount"   name="lumenamount" class="form-control" #lumenamount="ngModel"
+            readonly />
+          <!--<div *ngIf="f.submitted && lumenamount.invalid">
+                <div *ngIf="lumenamount.errors.required">Stellar Amount is required</div>
+              </div>--->
+          </div>
+        
+         <!-- <div class="form-group">
+            <label for="hedamount">Hedera Amount</label>
+            <input  type="text"  [(ngModel)]="form1.hedamount"   placeholder="Hedera Amount" name="hedamount" class="form-control" #hedamount="ngModel"
+                readonly />
+              <div *ngIf="f.submitted && hedamount.invalid">
+                   <div *ngIf="hedamount.errors.required">Hedera Amount is required</div>
+              </div> 
+          </div> -->
+    
+          
+           <div class="form-group">
+            <label for="totalprice">Total Price</label>
+            <input type="text"  [(ngModel)]="form1.totalprice" placeholder="Total Amount displayed " name="totalprice" class="form-control" #totalprice="ngModel"
+            readonly />
+           <!-- <div *ngIf="f.submitted && totalprice.invalid">
+                <div *ngIf="totalprice.errors.required">Total Amount is required</div>
+              </div>  -->
+          </div>
+    
+          <!---<div class="form-group">
+            <label for="stoplose">Stop Loss Price (To protect your value mandatorily use stop loss)</label>
+            <input type="text"  [(ngModel)]="form1.stoplose" placeholder="Stop Buy Loss Amount " name="stoplose" class="form-control" #stoplose="ngModel"
+            required />
+            <div *ngIf="f.submitted && stoplose.invalid">
+                <div *ngIf="stoplose.errors.required">Stop Buy Loss Amount is required</div>
+              </div>
+          </div> --->
+    
+          <div class="form-group">
+          <button class="btn btn-success">Exchange</button>
+          <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+             Exchange failed!<br/>{{errorMessage}}
+          </div>
+        </div>  
+        </form> 
+          </div>
+        </div>
+    
+      <!-- <div class="col-sm-8">
+            <div class="orde_dtls">
+            <h3> User Buy Order Details</h3>
+          <div class="table-responsive">
+            <table class="table table-striped">
+          <thead>
+          <tr>
+            
+            <th>UserName</th>
+            <th>FiatPrice</th>
+            <th>Hedera Amount</th>
+            <th>Lumen Amount</th>
+            <th>Total Amount</th>
+            <th>Stop Loss Amount</th>
+            <th>Status</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let buyuser of buyorderresponses">  
+            
+            <td>{{buyuser.username}}</td>
+            <td>{{buyuser.fiatprice}} USD</td>
+            <td>{{buyuser.hedamount}} Hbar</td>
+            <td>{{buyuser.lumenamount}} XLM</td>
+            <td>{{buyuser.totalprice}} USD</td>
+            <td>{{buyuser.stoplose}}XLM</td>
+            <td *ngIf="buyuser.status==0; else elseBlock">Pending</td>
+            <ng-template #elseBlock>Buy</ng-template> 
+          </tr>
+          </tbody>
+            </table>
+          </div>
+            </div>
+        </div> -->
+      </div> 
+    
+    </div>
+     <button class="btn btn-info" (click)="showBuyUser()"> Check your Order Details</button>  <br/>
+     <button class="btn btn-info" (click)="goHome()"> Home</button> 
+    
+       
+        

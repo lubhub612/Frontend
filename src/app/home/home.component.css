@@ -1,0 +1,95 @@
+.account_info .form-group label {
+	font-size: 14px;
+	font-weight: 600;
+}
+.account_info .form-group p {
+	font-size: 16px;
+	word-break: break-all;
+}
+
+.form_box {
+	border: 1px solid #e1e1e1;
+}
+.form_box input {
+	box-shadow: unset;
+	line-height: unset;
+	height: 45px;
+	border: 1px solid #e1e1e1;
+	font-size: 15px;
+	color: #4f4f4f;
+	font-weight: 300;
+	background-color: #fff;
+}
+.form_box h3 {
+	font-size: 20px;
+	background: #a6a6a6;
+	padding: 15px 25px;
+	color: #fff;
+	margin: 0px 0 20px;
+}
+
+.form_box form{
+	padding: 0 25px;
+}
+
+.form_box button{
+	background: #000;
+	border: none;
+	border-radius: 0;
+	padding: 15px 50px;
+	font-weight: 600;
+	margin-top: 10px;
+}
+
+.menu_new li button {
+	background: #000;
+	border: none;
+	color: #fff;
+	padding: 15px 30px;
+	border-radius: 0px;
+}
+.menu_new li {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.menu_new {
+	padding: 0;
+	margin-bottom: 15px;
+}
+.menu_new li button:hover, .form_box button:hover {
+	background-color: #a6a6a6 !important;
+}
+
+
+
+@media(max-width:767px){
+	.account_info h3, .form_box h3 {
+		font-size: 20px;
+	}
+	.account_info p {
+		font-size: 14px !important;
+	}
+	.menu_new li {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	.menu_new li button {
+		width: 100%;
+	}
+	.form_box {
+		margin-bottom: 30px;
+	}
+}
+
+@media(max-width:400px){
+   .form_box h3 {
+		font-size: 18px;
+		padding: 15px;
+	}
+	.form_box form {
+		padding: 0 15px;
+	}
+	
+}
+

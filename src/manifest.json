@@ -1,0 +1,28 @@
+{
+   "manifest_version": 2,
+   
+   "name" : "Lubdhak Hex browser Extension",
+   "short_name": "LubHexDex",
+   "description": "Lubdhak Decentralize Exchange using Hedera Hashgraph",
+   "version": "1.0.0",
+   "icons": {
+        "128": "icons/Ext-Icon-Configured-Hed-Dex-128x128.png",
+        "48": "icons/Ext-Icon-Configured-Hed-Dex-48x48.png",
+        "32": "icons/Ext-Icon-Configured-Hed-Dex-32x32.png",
+        "16": "icons/Ext-Icon-Configured-Hed-Dex-16x16.png"
+    }, 
+    "browser_action": {
+        "default_icon": "icons/Ext-Icon-Configured-Hed-Dex-16x16.png",
+        "default_popup": "index.html"
+    },
+	 "permissions": [
+	    "tabs",
+		"storage",
+        "activeTab",
+	    "http://127.0.0.1/*",
+        "http://localhost:4200/*",
+        "http://localhost:8005/*"
+		],
+	    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+
+}

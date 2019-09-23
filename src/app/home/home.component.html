@@ -1,0 +1,186 @@
+<div *ngIf="info.token; else loggedOut">
+  <perfect-scrollbar [config]="config">
+    <div class="home_wraper">
+
+      <div class="row">
+        <div class="col-sm-6">
+            <div class="account_info"> 
+        <h3 class="text-primary">Your Hedera Account  Information</h3>
+        <div class="form-group">
+          <label>Username:</label>
+          <p>{{info.username}}</p>
+        </div>
+        <div class="form-group">
+          <label>PublicKey:</label>
+          <p>{{info.privatekey}}</p>
+        </div>
+        <div class="form-group">
+          <label>PrivateKey:</label>
+          <p>{{info.accountid}}</p>
+        </div>
+        <div class="form-group">
+          <label>AccountID:</label>
+          <p>{{info.publickey}}</p>
+        </div>
+        <div class="form-group">
+          <label>Balance:</label>
+          <p>{{info.balance}}</p>
+        </div>
+        <div class="form-group">
+          <label>Privatekey In Mobile Wallet:</label>
+          <p>{{info.accountid.substring(32,96)}}</p>
+        </div>
+        <div class="form-group">
+          <label>PUblickey In Mobile Wallet:</label>
+          <p>{{info.privatekey.substring(24,88)}}</p>
+        </div>
+        <div class="form-group">
+          <label>Actual Private key In Mobile Wallet:</label>
+          <p>{{info.accountid.substring(32,96)}}{{info.privatekey.substring(24,88)}}</p>
+        </div>
+
+      </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="account_info"> 
+    <h3 class="text-primary">Your Stellar Account Information</h3>
+      <div class="form-group">
+        <label>Stellar Private Key:</label>
+        <p>{{info.privateaddress}}</p>
+      </div>
+
+      <div class="form-group">
+        <label>Stellar Public Address:</label>
+        <p>{{info.publicaddress}}</p>
+      </div>
+
+      <!--<div class="form-group">
+        <label>Stellar Private Key:</label>
+        <p>{{info.privateaddress}}</p>
+      </div> -->
+      </div>
+        </div>
+      </div>
+    
+
+    <hr/>
+
+    
+      <p> 
+          <strong>Please send 2 XLM to activate account</strong> <br/>
+          <strong> <a href="http://stellarchain.io/address/{{info.publicaddress}}"> Check Your Stellar Balance:</a> </strong><br/>
+      </p>
+       <hr/>
+
+
+      <ul class="menu_new">
+       <li><button class="btn btn-secondary" (click)="logout()">Logout</button></li> 
+          <li><button  class="btn btn-link"  (click)="sellhed()">Buy  Hbar</button></li>
+          <li><button  class="btn btn-link"  (click)="buyhed()">Sell  Hbar</button></li>
+          <li>
+            <button  class="btn btn-link"  (click)="senthed()">Transfer Hedera</button></li>
+      </ul>
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="form_box">
+
+          <h3 class="text-primary">Exchange Your Stellar To Hedera</h3>
+         
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+              <label for="privatekey">Stellar Privatekey</label>
+              <input type="text"   [(ngModel)]="form1.privatekey" placeholder="Stellar PrivateKey" name="privatekey" class="form-control"  #privatekey="ngModel"
+              required />
+              <div *ngIf="f.submitted && privatekey.invalid">
+                  <div *ngIf="privatekey.errors.required">Stellar Private Key is required</div>
+                </div>
+            </div>
+          
+          
+            <div class="form-group">
+              <label for="accountid">Hedera Account Id</label>
+              <input type="text"  [(ngModel)]="form1.accountid" placeholder="Hedera Account Id" name="accountid" class="form-control" #accountid="ngModel"
+              required />
+              <div *ngIf="f.submitted && accountid.invalid">
+                  <div *ngIf="accountid.errors.required">Hedera Account Id is required</div>
+                </div>
+            </div>
+      
+            <div class="form-group">
+                <label for="lumenamount">Stellar  Amount</label>
+                <input type="text" [(ngModel)]="form1.lumenamount" (ngModelChange)="valuechange($event)"  placeholder="Stellar Amount"   name="lumenamount" class="form-control" #lumenamount="ngModel"
+                required />
+                <div *ngIf="f.submitted && lumenamount.invalid">
+                    <div *ngIf="lumenamount.errors.required">Lumen Amount is required</div>
+                  </div>
+              </div>
+
+      
+            <div class="form-group">
+              <label for="hedamount">Hedera Amount</label>
+              <input  type="text"  [(ngModel)]="form1.hedamount"   placeholder="Hedera Amount" name="hedamount" class="form-control" #hedamount="ngModel"
+                  required />
+                <div *ngIf="f.submitted && hedamount.invalid">
+                     <div *ngIf="hedamount.errors.required">Hedera Amount is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+            <button class="btn btn-success">Exchange</button>
+            <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+               Exchabge failed!<br/>{{errorMessage}}
+            </div>
+          </div>  
+          </form> 
+       
+        </div> 
+      </div>
+      <div class="col-sm-6">
+        <div class="form_box">
+          <h3 class="text-primary">Exchange Your Hedera To Stellar</h3> 
+          <form>
+              <div class="form-group">
+                <label for="lumenpublickey">Stellar Public Address</label>
+                <input type="text" [(ngModel)]="form2.lumenpublickey" placeholder="Stellar PublicKey" name="lumenpublickey" class="form-control" id="lumenpublickey">
+              </div>
+        
+              <div class="form-group">
+                <label for="hedaccountid">Hedera Account Id</label>
+                <input type="text" [(ngModel)]="form2.hedaccountid" placeholder="Hedera Account Id" name="hedaccountid" class="form-control" id="hedaccountid">
+              </div>
+        
+              <div class="form-group">
+                <label for="hedprivatekey">Hedera Private Key</label>
+                <input type="text" [(ngModel)]="form2.hedprivatekey" placeholder="Hedera Private Key" name="hedprivatekey" class="form-control" id="hedprivatekey">
+              </div>
+
+
+              <div class="form-group">
+                  <label for="hedamount">Hedera Amount</label>
+                  <input [(ngModel)]="form2.hedamount1"  (ngModelChange)="valuechange1($event)"  placeholder="Hedera Amount" name="hedamount1" class="form-control" id="hedamount1">
+                </div>
+        
+              <div class="form-group">
+                <label for="lumenamount1">Lumen Amount</label>
+                <input [(ngModel)]="form2.lumenamount1"  placeholder="Lumen Amount"     name="lumenamount1" class="form-control" id="lumenamount1">
+              </div>
+        
+              
+            
+              <button class="btn btn-success" (click)="exchangeUser1()">Exchange</button>
+          </form>
+        </div>
+      </div>
+  </div>
+  
+
+
+
+  </div>
+  </perfect-scrollbar>
+
+
+</div>
+
+<ng-template #loggedOut>
+Please <button  class="btn btn-link"  (click)="lhedi()">login</button>.
+</ng-template>

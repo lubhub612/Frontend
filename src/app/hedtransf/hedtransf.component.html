@@ -1,0 +1,63 @@
+<div class="buyhedra_sec">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="form_box">
+          <div class="account_info">
+          <h3 class="text-primary">Hedera Account Details</h3>
+          <div class="form-group">
+              <label>Hedera Account id :</label> <p>{{info.publickey}} </p> </div>
+          <div class="form-group"><label> Hedera Private Key : </label> <p> {{info.accountid}} </p></div>
+          <div class="form-group"><label> Hbar Balance in your account: </label> <p> {{info.balance}}  tinyHbar </p> </div>
+            </div>
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    
+    <div class="form-group">
+        <label for="hedaccountid">Hedera Account Id</label>
+        <input type="text"  [(ngModel)]="form1.hedaccountid" placeholder="Hedera Account Id" name="hedaccountid" class="form-control" #hedaccountid="ngModel"
+        required />
+        <div *ngIf="f.submitted && hedaccountid.invalid">
+            <div *ngIf="hedaccountid.errors.required">Hedera Account Id is required</div>
+          </div>
+      </div>
+  
+      <div class="form-group">
+          <label for="hedprivatekey">Hedera Private Key</label>
+          <input type="text" [(ngModel)]="form1.hedprivatekey" placeholder="Hedera Private Key" name="hedprivatekey" class="form-control" #hedprivatekey="ngModel" 
+          required />
+          <div *ngIf="f.submitted && hedprivatekey.invalid">
+              <div *ngIf="hedprivatekey.errors.required">Hedera Privatekey  is required</div>
+            </div> 
+      </div>
+  
+      <div class="form-group">
+          <label for="thedaccountid"> Sender Hedera Account Id</label>
+          <input type="text"  [(ngModel)]="form1.thedaccountid" placeholder="Hedera Account Id" name="thedaccountid" class="form-control" #thedaccountid="ngModel"
+          required />
+          <div *ngIf="f.submitted && thedaccountid.invalid">
+              <div *ngIf="thedaccountid.errors.required">Hedera Account Id is required</div>
+            </div>
+        </div>
+  
+  
+      <div class="form-group">
+        <label for="hedamount1">Hedera Amount</label>
+        <input  type="text"  [(ngModel)]="form1.hedamount1"   placeholder="Hedera Amount" name="hedamount1" class="form-control" #hedamount1="ngModel"
+            required />
+          <div *ngIf="f.submitted && hedamount1.invalid">
+               <div *ngIf="hedamount1.errors.required">Hedera Amount is required</div>
+          </div>
+      </div>
+      <div class="form-group">
+      <button class="btn btn-success">SEND</button>
+      <div *ngIf="f.submitted && isSignUpFailed" class="alert alert-warning">
+         Transfer failed!<br/>{{errorMessage}}
+      </div>
+    </div>  
+    </form> 
+      </div>
+    </div>
+  </div> 
+  </div>
+
+
+  <button class="btn btn-info" (click)="goHome()"> Go Home</button>

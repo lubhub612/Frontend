@@ -1,0 +1,21 @@
+
+<div class="row col-sm-6" style="max-width:550px; max-height: 80%;">
+  <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="hedprivatekey">Hedera Private Key</label>
+      <input type="password" class="form-control" name="hedprivatekey" [(ngModel)]="form.hedprivatekey" #hedprivatekey="ngModel"
+        required />
+      <div *ngIf="f.submitted && hedprivatekey.invalid">
+        <div *ngIf="hedprivatekey.errors.required">Hedera Private Key is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary">Login</button>
+      <div *ngIf="f.submitted && isLoginFailed" class="alert alert-danger">
+        Login failed: {{errorMessage}}
+      </div>
+    </div>
+  </form>
+  <p>Don't Have an Account ?</p>
+  <button  class="btn btn-link"  (click)="signuphedp()">SignUp</button>
+  </div>
